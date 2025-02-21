@@ -2,9 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Estudiante {
-    String nombre;
-    double nota1, nota2, nota3;
+    String nombre;   // Nombre del estudiante
+    double nota1, nota2, nota3;  // Las tres notas del estudiante
 
+    // Constructor para inicializar los atributos del estudiante
     public Estudiante(String nombre, double nota1, double nota2, double nota3) {
         this.nombre = nombre;
         this.nota1 = nota1;
@@ -12,44 +13,51 @@ class Estudiante {
         this.nota3 = nota3;
     }
 
+    // Método para calcular la media de las tres notas
     public double calcularMedia() {
-        return (nota1 + nota2 + nota3) / 3;
+        return (nota1 + nota2 + nota3) / 3;  // La media es la suma de las notas dividida por 3
     }
 
+    // Método para mostrar la información del estudiante en consola
     public void mostrarInfo() {
-        System.out.println("📌 Estudiante: " + nombre);
-        System.out.println("📊 Nota media: " + String.format("%.2f", calcularMedia()));
-        System.out.println("----------------------");
+        System.out.println("📌 Estudiante: " + nombre);  // Imprime el nombre del estudiante
+        System.out.println("📊 Nota media: " + String.format("%.2f", calcularMedia()));  // Imprime la nota media formateada a dos decimales
+        System.out.println("----------------------");  // Línea separadora para la claridad visual
     }
 }
 
 public class GestionaEstudiantes {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);  // Creamos el objeto Scanner para leer datos desde la consola
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();  // Creamos una lista para almacenar los estudiantes
 
         System.out.println("🎓 Gestión de Estudiantes");
+        
+        // Bucle para ingresar estudiantes, hasta que el usuario ingrese "salir"
         while (true) {
             System.out.print("Ingrese el nombre del estudiante (o 'salir' para terminar): ");
-            String nombre = scanner.nextLine();
-            if (nombre.equalsIgnoreCase("salir")) break;
+            String nombre = scanner.nextLine();  // Leemos el nombre del estudiante
+            if (nombre.equalsIgnoreCase("salir")) break;  // Si el usuario ingresa "salir", salimos del bucle
 
+            // Solicitamos las tres notas del estudiante
             System.out.print("Ingrese la primera nota: ");
             double nota1 = scanner.nextDouble();
             System.out.print("Ingrese la segunda nota: ");
             double nota2 = scanner.nextDouble();
             System.out.print("Ingrese la tercera nota: ");
             double nota3 = scanner.nextDouble();
-            scanner.nextLine(); // Limpiar buffer
+            scanner.nextLine();  // Limpiar el buffer después de leer los números
 
+            // Creamos un nuevo objeto Estudiante y lo agregamos a la lista
             estudiantes.add(new Estudiante(nombre, nota1, nota2, nota3));
         }
 
+        // Imprimimos la lista de estudiantes y sus notas
         System.out.println("\n📋 **Lista de Estudiantes y Notas**");
         for (Estudiante estudiante : estudiantes) {
-            estudiante.mostrarInfo();
+            estudiante.mostrarInfo();  // Llamamos al método mostrarInfo para imprimir la información de cada estudiante
         }
 
-        scanner.close();
+        scanner.close();  // Cerramos el scanner para liberar recursos
     }
 }
