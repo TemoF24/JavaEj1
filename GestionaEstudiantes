@@ -1,10 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
 class Estudiante {
     String nombre;   // Nombre del estudiante
     double nota1, nota2, nota3;  // Las tres notas del estudiante
-
     // Constructor para inicializar los atributos del estudiante
     public Estudiante(String nombre, double nota1, double nota2, double nota3) {
         this.nombre = nombre;
@@ -12,12 +10,10 @@ class Estudiante {
         this.nota2 = nota2;
         this.nota3 = nota3;
     }
-
     // Método para calcular la media de las tres notas
     public double calcularMedia() {
         return (nota1 + nota2 + nota3) / 3;  // La media es la suma de las notas dividida por 3
     }
-
     // Método para mostrar la información del estudiante en consola
     public void mostrarInfo() {
         System.out.println("📌 Estudiante: " + nombre);  // Imprime el nombre del estudiante
@@ -25,14 +21,11 @@ class Estudiante {
         System.out.println("----------------------");  // Línea separadora para la claridad visual
     }
 }
-
 public class GestionaEstudiantes {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);  // Creamos el objeto Scanner para leer datos desde la consola
         ArrayList<Estudiante> estudiantes = new ArrayList<>();  // Creamos una lista para almacenar los estudiantes
-
-        System.out.println("🎓 Gestión de Estudiantes");
-        
+        System.out.println("🎓 Gestión de Estudiantes");   
         // Bucle para ingresar estudiantes, hasta que el usuario ingrese "salir"
         while (true) {
             System.out.print("Ingrese el nombre del estudiante (o 'salir' para terminar): ");
@@ -57,7 +50,6 @@ public class GestionaEstudiantes {
         for (Estudiante estudiante : estudiantes) {
             estudiante.mostrarInfo();  // Llamamos al método mostrarInfo para imprimir la información de cada estudiante
         }
-
         scanner.close();  // Cerramos el scanner para liberar recursos
     }
 }
